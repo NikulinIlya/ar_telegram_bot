@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::match(['post', 'get'], 'register', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('register');
+
 Route::get('/home', 'HomeController@index')->name('home');

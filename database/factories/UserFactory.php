@@ -21,3 +21,12 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
+    return [
+        'name' => 'admin',
+        'email' => 'silmarr01@gmail.com',
+        'password' => bcrypt('123456'),
+        'remember_token' => str_random(10),
+    ];
+});
