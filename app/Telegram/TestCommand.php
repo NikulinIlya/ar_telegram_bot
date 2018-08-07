@@ -25,11 +25,15 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $commands = $this->telegram->getCommands();
+        $this->replyWithChatAction(['action' => Actions::TYPING]);
+        $user = \App\User::find(1);
+        $this->replyWithMessage(['text' => 'Почта пользователя в laravel: ' . $user->email]);
 
-        $text = '';
-        foreach ($commands as $name => $handler) {
-            $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
+        $telegram_user = \Telegram::getWebhookUpdates()['message'];
+        $text = sprintf('%s: %s'.PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
+
+        if(!empty($telegram_user['from']['username'])) {
+            $text .= sprintf('%s: %s'.PHP_EOL, 'Ваше имя пользователя в телеграм', $telegram_user['from']['username']);
         }
 
         $this->replyWithMessage(compact('text'));
