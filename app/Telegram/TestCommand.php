@@ -26,8 +26,8 @@ class TestCommand extends Command
     public function handle()
     {
         $this->replyWithChatAction(['action' => Actions::TYPING]);
-        $user = \App\User::find(1);
-        $this->replyWithMessage(['text' => 'Почта пользователя в laravel: ' . $user->email]);
+//        $user = \App\User::find(1);
+//        $this->replyWithMessage(['text' => 'Почта пользователя в laravel: ' . $user->email]);
 
 //        $telegram_user = \Telegram::getWebhookUpdates()['message'];
 //        $text = sprintf('%s: %s'.PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
@@ -36,7 +36,7 @@ class TestCommand extends Command
 //        $text .= sprintf('%s: %s'.PHP_EOL, 'Ваше имя пользователя в телеграм', $telegram_user['from']['username']);
 
 
-//        $this->replyWithMessage('Hello!');
+        $this->replyWithMessage('Hello!');
 //        $this->replyWithMessage(compact('text'));
     }
 }
