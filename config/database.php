@@ -58,7 +58,7 @@ return [
 
         'mysql_production' => [
             'driver' => 'mysql',
-            'host' => $DATABASE_URL["host"],
+            'host' => $DATABASE_URL["host"].('homestead' == gethostname() ? null : ':33060'),
             'port' => env('DB_PORT', '3306'),
             'database' => ltrim($DATABASE_URL["path"], "/"),
             'username' => $DATABASE_URL["user"],
