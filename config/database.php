@@ -1,6 +1,6 @@
 <?php
 
-$DATABASE_URL=parse_url(getenv('DATABASE_URL'));
+$DATABASE_URL=parse_url(getenv('CLEARDB_DATABASE_URL'));
 
 return [
 
@@ -58,7 +58,7 @@ return [
 
         'mysql_production' => [
             'driver' => 'mysql',
-            'host' => $DATABASE_URL["host"].('homestead' == gethostname() ? null : ':33060'),
+            'host' => $DATABASE_URL["host"],
             'port' => env('DB_PORT', '3306'),
             'database' => ltrim($DATABASE_URL["path"], "/"),
             'username' => $DATABASE_URL["user"],
