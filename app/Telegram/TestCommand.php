@@ -29,14 +29,14 @@ class TestCommand extends Command
         $user = \App\User::find(1);
         $this->replyWithMessage(['text' => 'Почта пользователя в laravel: ' . $user->email]);
 
-        $telegram_user = \Telegram::getWebhookUpdates()['message'];
-        $text = sprintf('%s: %s'.PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
+//        $telegram_user = \Telegram::getWebhookUpdates()['message'];
+//        $text = sprintf('%s: %s'.PHP_EOL, 'Ваш номер чата', $telegram_user['from']['id']);
 
 //        if(!empty($telegram_user['from']['username'])) {
-        $text .= sprintf('%s: %s'.PHP_EOL, 'Ваше имя пользователя в телеграм', $telegram_user['from']['username']);
+//        $text .= sprintf('%s: %s'.PHP_EOL, 'Ваше имя пользователя в телеграм', $telegram_user['from']['username']);
 
 
-        $this->replyWithMessage('Hello!');
-        $this->replyWithMessage(compact('text'));
+//        $this->replyWithMessage('Hello!');
+//        $this->replyWithMessage(compact('text'));
     }
 }
