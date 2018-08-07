@@ -56,11 +56,11 @@ return [
 
         'mysql_production' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST_PROD', '127.0.0.1'),
+            'host' => env('DB_HOST_PROD'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE_PROD', 'forge'),
-            'username' => env('DB_USERNAME_PROD', 'forge'),
-            'password' => env('DB_PASSWORD_PROD', ''),
+            'database' => env('DB_DATABASE_PROD'),
+            'username' => env('DB_USERNAME_PROD'),
+            'password' => env('DB_PASSWORD_PROD'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
