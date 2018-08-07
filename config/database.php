@@ -1,11 +1,5 @@
 <?php
 
-$url = parse_url(getenv('DATABASE_URL'));
-$host = $url["host"]??null;
-$username = $url["user"]??null;
-$password = $url["pass"]??null;
-$database = substr($url["path"], 1)??null;
-
 return [
 
     /*
@@ -62,10 +56,11 @@ return [
 
         'mysql_production' => [
             'driver' => 'mysql',
-            'host' => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => env('DB_HOST_PROD', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE_PROD', 'forge'),
+            'username' => env('DB_USERNAME_PROD', 'forge'),
+            'password' => env('DB_PASSWORD_PROD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
