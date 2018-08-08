@@ -11,9 +11,6 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,7 +26,7 @@ Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.
 });
 
 Route::post(Telegram::getAccessToken(), function () {
-   Telegram::commandsHandler(true);
+    app('App\Http\Controllers\Backend\TelegramConroller')->webhook();
 });
 
 Auth::routes();
