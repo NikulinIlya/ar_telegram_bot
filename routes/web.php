@@ -15,19 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.')->group(function (){
-    Route::get('/', 'DashboardController@index')->name('index');
-
-    Route::get('/setting', 'SettingController@index')->name('setting.index');
-    Route::post('/setting/store', 'SettingController@store')->name('setting.store');
-
-    Route::post('setting/setwebhook', 'SettingController@setwebhook')->name('setting.setwebhook');
-    Route::post('setting/getwebhookinfo', 'SettingController@getwebhookinfo')->name('setting.getwebhookinfo');
-});
-
-Route::post(Telegram::getAccessToken(), function () {
-    app('App\Http\Controllers\Backend\TelegramController')->webhook();
-});
+//Route::middleware(['auth'])->prefix('admin')->namespace('Backend')->name('admin.')->group(function (){
+//    Route::get('/', 'DashboardController@index')->name('index');
+//
+//    Route::get('/setting', 'SettingController@index')->name('setting.index');
+//    Route::post('/setting/store', 'SettingController@store')->name('setting.store');
+//
+//    Route::post('setting/setwebhook', 'SettingController@setwebhook')->name('setting.setwebhook');
+//    Route::post('setting/getwebhookinfo', 'SettingController@getwebhookinfo')->name('setting.getwebhookinfo');
+//});
+//
+//Route::post(Telegram::getAccessToken(), function () {
+//    app('App\Http\Controllers\Backend\TelegramController')->webhook();
+//});
 
 Auth::routes();
 
@@ -37,3 +37,9 @@ Route::match(['post', 'get'], 'register', function () {
 })->name('register');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('get-me', 'TelegramController@getMe');
+
+Route::get('set-hook', 'TelegramController@setWebHook');
+
+Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', 'TelegramController@handleRequest');

@@ -11,8 +11,9 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
+
     protected $except = [
-        //
+        "644916677:AAHoaA5Dc4lfjghtaa6aX1KztaP1JT0klSc/webhook",
     ];
 
     public function __construct(\Illuminate\Foundation\Application $app, \Illuminate\Contracts\Encryption\Encrypter $encrypter)
