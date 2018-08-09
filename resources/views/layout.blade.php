@@ -23,9 +23,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/send-photo') }}">Send Photo</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">GitHub Code</a>
-            </li>
+
         </ul>
     </div>
 </nav>
