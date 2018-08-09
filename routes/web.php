@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
@@ -24,4 +24,10 @@ Route::match(['post', 'get'], 'register', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'TelegramBotController@sendMessage');
+Route::post('/send-message', 'TelegramBotController@storeMessage');
+Route::get('/send-photo', 'TelegramBotController@sendPhoto');
+Route::post('/store-photo', 'TelegramBotController@storePhoto');
 Route::get('/updated-activity', 'TelegramBotController@updatedActivity');
+
+
